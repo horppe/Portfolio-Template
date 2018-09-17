@@ -1,38 +1,12 @@
-var dropSwitch = {dropped:true};
 function dropDown(){
-
-  var dropOne = document.querySelector("#float-down");
-  var dropTwo = document.querySelectorAll("#float-down li");
-  var dropThree = document.querySelectorAll("#float-down li a");
-
-  dropOne.style.display = dropSwitch.dropped ? "inline-block" : "none";
-
-    for (var i = 0; i < dropTwo.length; i++) {
-      if (dropSwitch.dropped) {
-        dropTwo[i].style.display = "inline-block";
-      }
-      else{
-        dropTwo[i].style.display = "none";
-      }
-    }
-  for (var i = 0; i < dropThree.length; i++) {
-    if (dropSwitch.dropped) {
-      dropThree[i].style.display = "inline-block";
-    }
-    else{
-      dropThree[i].style.display =   "none";
-    }
+  console.log("clicked");
+  var hasClass = document.querySelector("header nav").classList.contains("dropped");
+  if (hasClass) {
+    document.querySelector("header nav").classList.remove("dropped");
+  } else {
+    document.querySelector("header nav").classList.add("dropped");
   }
-
-  dropSwitch.dropped = !dropSwitch.dropped;
 }
 
-var dropElement = document.querySelector("li .fa-align-justify");
-dropElement.addEventListener("mousedown", dropDown);
-addEventListener("resize", function(event){
-  if(document.body.clientWidth > 900){
-    dropSwitch.dropped = false;
-    dropDown();
-  }
-
-});
+var dropElement = document.querySelector("header i.fa-align-justify");
+dropElement.addEventListener("click", dropDown);
